@@ -32,3 +32,27 @@ class PasswordManager:
             password += random.choice(self._get_characters(includeUppercase, includeNumbers, includeSpecialCharacters))
         return password
     
+    def validatePasswordStrength(self,password : str):
+        hasSpecialCharacter = False
+        spacialChar = "@#$%*!?_=+1234567890"
+        for char in spacialChar:
+                if(char in password):
+                    hasSpecialCharacter = True
+                    break
+        if(len(password) <= 4):
+            return "Password is very weak"
+        elif(4 < len(password) <= 8):
+            if(hasSpecialCharacter == True):
+                return "Password is average"
+            else:
+                return "Password is weak"
+        elif(8 < len(password) <= 16):
+            if(hasSpecialCharacter == True):
+                return "Password is strong"
+            else:
+                return " Password is good"
+        else:
+            if(hasSpecialCharacter == True):
+                return "Password is very strong"
+            else:
+                return " Password is good"
