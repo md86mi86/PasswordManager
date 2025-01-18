@@ -1,4 +1,3 @@
-
 # PasswordManager
 
 A Python package for generating and validating strong passwords based on various criteria.
@@ -10,6 +9,7 @@ A Python package for generating and validating strong passwords based on various
   - Include special characters
   - Specify password length
 - **Validate password strength** to ensure secure password creation.
+- **Manage passwords** by saving them to a file for easy access.
 
 ## Installation
 
@@ -53,6 +53,21 @@ git clone https://github.com/md86mi86/PasswordManager.git
      - "Password is strong"
      - "Password is very strong"
 
+4. **Manage passwords** by saving them to a file:
+   ```python
+   manager.managePassword(name="Instagram", username="user123", password="mypassword")
+   ```
+
+   - Saves the following data to a file named `social_media.txt`:
+     ```
+     {
+         "social_media": "Instagram",
+         "username": "user123",
+         "password": "mypassword"
+     }
+     ```
+   - Prints `Data saved successfully!` upon success.
+
 ## Example
 
 ```python
@@ -67,6 +82,9 @@ print(f"Generated password: {password}")
 # Validate password strength
 strength = manager.validatePasswordStrength(password)
 print(f"Password strength: {strength}")
+
+# Save the password to a file
+manager.managePassword(name="Instagram", username="user123", password=password)
 ```
 
 ## License

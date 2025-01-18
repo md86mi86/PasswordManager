@@ -58,3 +58,17 @@ class PasswordManager:
                 return "Password is very strong"
             else:
                 return " Password is good"
+            
+    def managePassword(self,name : str,username : str,password : str):
+        data = {
+            "social_media": name,
+            "username": username,
+            "password": password,
+        }
+        
+        try:
+            with open("social_media.txt", "a+") as fileData:
+                fileData.write(str(data) + "\n")
+            print("Data saved successfully!")
+        except Exception as e:
+            print(f"An error occurred: {e}")
