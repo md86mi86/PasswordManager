@@ -1,5 +1,6 @@
 import random
 import string
+import hashlib
 
 class PasswordManager:
     
@@ -72,3 +73,21 @@ class PasswordManager:
             print("Data saved successfully!")
         except Exception as e:
             print(f"An error occurred: {e}")
+            
+    def randomPassword(self):
+        length = random.randint(4,20)
+        includeUppercase = random.choice([True,False])
+        includeNumbers = random.choice([True,False])
+        includeSpecialCharacters = random.choice([True,False])
+        spacialChar = "@#$%*!?_=+"
+        password = random.choice(string.ascii_lowercase)
+        if includeUppercase == True:
+            password += random.choice(string.ascii_uppercase)
+        if includeNumbers == True:
+            password += random.choice(string.digits)
+        if includeSpecialCharacters == True:
+            password += random.choice(spacialChar)
+        remaining_length = length - len(password)
+        for i in range(remaining_length):
+            password += random.choice(self._get_characters(includeUppercase, includeNumbers, includeSpecialCharacters))
+        return password
